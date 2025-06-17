@@ -2,7 +2,18 @@ const Task = require('../models/Task');
 
 const createTask = async (req, res) => {
   try {
-    const task = new Task({ ...req.body, userId: req.user.id });
+    const { title, priority, scheduledDate, startTime, duration } = req.body;
+
+    const task = new Task({
+      userId: req.user.id,
+      title,
+      priority,
+      scheduledDate,
+      startTime,
+      duration,
+      status: 'pending'
+    });
+
     const saved = await task.save();
     res.status(201).json(saved);
   } catch (err) {

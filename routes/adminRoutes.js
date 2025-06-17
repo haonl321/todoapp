@@ -1,12 +1,16 @@
 const express = require('express');
 const router = express.Router();
+const {
+  systemStats,
+  getAllUsers,
+  deleteUser
+} = require('../controllers/adminController');
+
 const authMiddleware = require('../middlewares/authMiddleware');
 const adminMiddleware = require('../middlewares/adminMiddleware');
-const { systemStats } = require('../controllers/adminController');
 
-router.use(authMiddleware);
-router.use(adminMiddleware);
-
-router.get('/stats', systemStats); // GET /api/admin/stats
+router.get('/stats', authMiddleware, adminMiddleware, systemStats);
+router.get('/users', authMiddleware, adminMiddleware, getAllUsers);
+router.delete('/users/:id', authMiddleware, adminMiddleware, deleteUser);
 
 module.exports = router;
