@@ -62,7 +62,7 @@ export default function Dashboard() {
   e.preventDefault();
   try {
     if (taskBeingEdited) {
-      const res = await fetch(`http://localhost:5000/api/tasks/${taskBeingEdited._id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/tasks/${taskBeingEdited._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ export default function Dashboard() {
       const updated = await res.json();
       setTasks(tasks.map(t => (t._id === updated._id ? updated : t)));
     } else {
-      const res = await fetch('http://localhost:5000/api/tasks', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/tasks`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ export default function Dashboard() {
     const ok = window.confirm('Bạn có chắc chắn muốn xoá công việc này?');
     if (!ok) return;
 
-    await fetch(`http://localhost:5000/api/tasks/${id}`, {
+    await fetch(`${process.env.REACT_APP_API_URL}/api/tasks/${id}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -113,7 +113,7 @@ export default function Dashboard() {
   };
 
   const toggleStatus = async task => {
-    const res = await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/tasks/${task._id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
