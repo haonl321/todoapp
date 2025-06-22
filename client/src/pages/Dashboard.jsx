@@ -154,6 +154,17 @@ export default function Dashboard() {
           <div>
             <h2 className="text-2xl font-bold text-blue-700">📋 Danh sách công việc</h2>
             <p className="text-sm text-gray-500">👤 {user?.name}</p>
+            <p className="text-sm text-gray-500 mt-1">
+              ⚠️ Nếu không thấy danh sách công việc hiển thị, hãy mở{' '}
+              <a
+                href="https://todoapp-backend-y12v.onrender.com"
+                target="_blank"
+                className="text-blue-600 underline"
+              >
+                backend API
+              </a>{' '}
+              để đánh thức server Render (mất khoảng 10–30 giây).
+            </p>
           </div>
 
           <div className="flex items-center gap-4">

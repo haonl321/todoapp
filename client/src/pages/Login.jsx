@@ -34,9 +34,22 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="bg-white p-6 rounded shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-4 text-center">Đăng nhập</h2>
+        <h2 className="text-2xl font-bold mb-2 text-center">Đăng nhập</h2>
 
-        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+        {/* ✅ Cảnh báo mở backend nếu đang sleep */}
+        <p className="text-sm text-gray-500 text-center mb-4">
+          ⚠️ Nếu không đăng nhập được, hãy mở{' '}
+          <a
+            href="https://todoapp-backend-y12v.onrender.com"
+            target="_blank"
+            className="text-blue-600 underline"
+          >
+            backend API
+          </a>{' '}
+          trước để đánh thức server (mất khoảng 10–30 giây).
+        </p>
+
+        {error && <p className="text-red-500 text-sm mb-2 text-center">{error}</p>}
 
         <form onSubmit={handleSubmit} className="space-y-3">
           <input
