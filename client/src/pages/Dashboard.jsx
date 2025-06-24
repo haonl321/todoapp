@@ -239,7 +239,7 @@ export default function Dashboard() {
                   </h3>
                   {task.scheduledDate && task.startTime && (
                     <p className="text-xs text-gray-500">
-                      🕒 Làm lúc: {format(new Date(task.scheduledDate), 'dd/MM/yyyy')}
+                      
                       {' từ ' + task.startTime}
                       {' đến ' + getEndTime(task.startTime, task.duration)}
                     </p>
